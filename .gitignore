@@ -396,3 +396,5 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/HumanForce/ClientApp/.angular/cache/15.2.7
+/HumanForce/ClientApp/.angular/cache/15.2.10
