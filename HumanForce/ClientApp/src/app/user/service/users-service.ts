@@ -7,6 +7,7 @@ import { environment } from "../../../environments/environment";
 
 
 
+
 @Injectable()
 export class UsersService extends HFBaseService {
   static providers = [UsersService]
@@ -23,17 +24,10 @@ export class UsersService extends HFBaseService {
     this.getTeamMembersRequestSubject.pipe(
       takeUntil(this.unsubscribe),
       switchMap(() => {
-        debugger;
         return this.httpClient.get<User[]>(`${environment.apiUrl}/user/getteammembers`)
       })
     ).subscribe(result => {
       this.users = result;
     });
-
   }
-  private buildForm = () => {
-
-  }
-
-  
 }

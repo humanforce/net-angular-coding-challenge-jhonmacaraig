@@ -34,6 +34,11 @@
     <None Remove="ClientApp\Framework\enums\hf-country-enum.ts" />
     <None Remove="ClientApp\Framework\shared.module.ts" />
     <None Remove="ClientApp\src\app\app.routing.ts" />
+    <None Remove="ClientApp\src\app\ticket\component\ticket-component\ticket-component.ts" />
+    <None Remove="ClientApp\src\app\ticket\service\ticket-service.ts" />
+    <None Remove="ClientApp\src\app\ticket\ticket.module.routing.ts" />
+    <None Remove="ClientApp\src\app\ticket\ticket.module.ts" />
+    <None Remove="ClientApp\src\app\ticket\ticket.routing.ts" />
     <None Remove="ClientApp\src\app\user\component\public-holiday-component\public-holiday-component.ts" />
     <None Remove="ClientApp\src\app\user\enum\user-country-string-enum.ts" />
     <None Remove="ClientApp\src\app\user\model\user-location-model.ts" />
@@ -53,6 +58,19 @@
     <TypeScriptCompile Include="ClientApp\Framework\enums\hf-country-enum.ts" />
     <TypeScriptCompile Include="ClientApp\Framework\shared.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\app.routing.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\ticket\component\ticket-component\ticket-component.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\ticket\service\ticket-service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\ticket\ticket.module.routing.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\ticket\ticket.module.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\ticket\ticket.routing.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\src\app\user\component\public-holiday-component\public-holiday-component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\user\enum\user-country-string-enum.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\user\model\user-location-model.ts" />
@@ -68,6 +86,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\src\app\ticket\model\" />
     <Folder Include="ClientApp\src\app\user\model-form\" />
   </ItemGroup>
 

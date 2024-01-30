@@ -1,4 +1,5 @@
 ﻿using HF.Service.Infrastructure;
+using HF.Service.Ticket;
 using HF.Service.User;
 using Microsoft.AspNetCore.Hosting;
 
@@ -18,15 +19,13 @@ namespace HumanForce.StartUp
         private static void RegisterSingleTonDependencies(IServiceCollection services)
         {
             var webhostService = services.BuildServiceProvider().GetService<IWebHostEnvironment>();
-            services.AddSingleton<IServerServiceConfiguration>(new ServerServiceConfiguration(webhostService.ContentRootPath));
-
-
+            services.AddSingleton<IServerServiceConfiguration>(new ServerServiceConfiguration(webhostService?.ContentRootPath));
         }
 
         private static void RegisterCustomDependencies(IServiceCollection services)
         {
-
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ITicketService, TicketService>();
 
         }
     }
