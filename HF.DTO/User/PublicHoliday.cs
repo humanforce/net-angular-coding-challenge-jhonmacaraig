@@ -20,14 +20,14 @@ namespace HF.DTO.User
 
     }
 
-    public abstract class StartEnd
+    public class StartEnd
     {
         public string Date { get; set; }
     }
 
-    public class Start:StartEnd
+    public class Start : StartEnd
     {
-        
+
     }
 
     public class End : StartEnd

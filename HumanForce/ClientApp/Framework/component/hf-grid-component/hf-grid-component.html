@@ -1,6 +1,6 @@
 <div *ngIf="allowSearch" class="form-row py-1">
   <form>
-    
+    <input type="text" placeholder="Type to Search" (keyup)="onSearch?onSearchKeyUp($event):onUpdateFilterKeyUp($event)" class="form-control"/>
   </form>
 </div>
 <ngx-datatable class="bootstrap custom-border"

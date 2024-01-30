@@ -11,10 +11,10 @@
       <ng-container body>
         <div class="col-12">
           <div class="row">
-            <!--<hf-grid-component [allowSearch]="true"
-                               [rows]="usersService.users"
+            <hf-grid-component [allowSearch]="true"
+                               [rows]="publicHolidayService?.userPublicHoliday?.items"
                                [columnDefs]="columnDefs">
-            </hf-grid-component>-->
+            </hf-grid-component>
           </div>
         </div>
       </ng-container>

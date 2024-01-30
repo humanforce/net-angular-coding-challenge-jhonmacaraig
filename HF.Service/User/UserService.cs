@@ -40,7 +40,6 @@ namespace HF.Service.User
             var publicHolidayFile = $"{_serverServiceConfiguration.ServerPath}{filePathPublicHoliday}{fileName}";
             var jsonResult = File.ReadAllText(publicHolidayFile);
             var result = JsonConvert.DeserializeObject<PublicHoliday>(jsonResult);
-
             return result;
         }
 

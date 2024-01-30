@@ -2,10 +2,10 @@
   <div class="col-12">
     <hf-panel-inner-component>
       <ng-container header>
-        {{'teamMembers.panel.title'}}
-        <div class="action float-end">
+        {{'teamMembers.panel.title'}} |translations
+        <!--<div class="action float-end">
           <span class="spanCursorPointerButtonPanel"><i class="fa-solid fa-plus"></i>Add Member</span>
-        </div>
+        </div>-->
       </ng-container>
       <ng-container body>
         <div class="col-12">
@@ -23,12 +23,7 @@
 
 <ng-template #actionTemplate let-row="row" let-value="value">
   <div class="d-flex flex-row text-center">
-    <!--<div class="cursorpointer  datatable-edit-btn mt-1" (click)="onRowClick(row)" container="body">
-    <i class="fas fa-edit">View Holidays</i>
-  </div>-->
-    <a (click)="onViewHolidayClick(row)">Holiday</a>&nbsp;|&nbsp;
-    <a (click)="onViewTicketClick(row)">Tickets</a>  
-
+    <a (click)="onViewHolidayClick(row)">Holiday</a>&nbsp;
   </div>
 </ng-template>
 

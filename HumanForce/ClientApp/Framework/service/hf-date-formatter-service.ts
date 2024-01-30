@@ -7,11 +7,14 @@ export class HFDateFormatterService {
     return new Date(value);
   }
 
-  static formatToLocalDateTime = (value:Date): string => {
+  static formatToLocalDateTime = (value: Date): string => {
     return `${value.toLocaleDateString()} ${value.toLocaleTimeString()}`;
   }
 
-  static formatToLocalDate= (value: Date): string => {
+  static formatToLocalDate = (value: Date): string => {
+    if (typeof value === 'string') {
+      value = new Date(value);
+    }
     return `${value.toLocaleDateString()}`;
   }
 

@@ -14,7 +14,7 @@ export class PublicHolidayService extends HFBaseService {
 
   static providers = [PublicHolidayService];
 
-
+  userPublicHoliday: UserPublicHoliday;
   constructor(private httpClient: HttpClient, private readonly activatedRoute: ActivatedRoute) {
     super();
     this.activatedRoute.paramMap.pipe(take(1)).subscribe((r: any) => {
@@ -39,10 +39,10 @@ export class PublicHolidayService extends HFBaseService {
     this.getCountryPublicHoliday.pipe(
       takeUntil(this.unsubscribe),
       switchMap((id: number) => {
-        return this.httpClient.get<UserPublicHoliday[]>(`${environment.apiUrl}/user/getpublicholiday?id=${id}`);
+        return this.httpClient.get<UserPublicHoliday>(`${environment.apiUrl}/user/getpublicholiday?id=${id}`);
       })
     ).subscribe(result => {
-
+      this.userPublicHoliday = result;
     });
   }
 }
