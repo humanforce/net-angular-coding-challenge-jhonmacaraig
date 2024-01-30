@@ -1,0 +1,110 @@
+<div *ngIf="allowSearch" class="form-row py-1">
+  <form>
+    
+  </form>
+</div>
+<ngx-datatable class="bootstrap custom-border"
+               #table
+               style="height: 500px;"
+               [columnMode]="columnMode.force"
+               [headerHeight]="40"
+               [rowHeight]="45"
+               [footerHeight]="50"
+               [scrollbarH]="true"
+               [scrollbarV]="true"
+               [limit]="10"
+               [selected]="selected"
+               [rows]="currentRows"
+               [loadingIndicator]="isLoading || isLoadingKeySearch"
+               [selectionType]="selectionType.single"
+               [reorderable]="true"
+               (select)="onRowClick($event)">
+
+  <ngx-datatable-row-detail [rowHeight]="100" #myDetailRow>
+    <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+      <ng-template #loadedTemplate *ngTemplateOutlet="rowDetailTemplate; context: {row: row}"></ng-template>
+    </ng-template>
+  </ngx-datatable-row-detail>
+
+  <ngx-datatable-column *ngIf="rowDetailTemplate" [width]="50"
+                        [resizeable]="false"
+                        [sortable]="false"
+                        [draggable]="false"
+                        [canAutoResize]="false">
+    <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+      <a href="javascript:void(0)"
+         [class.datatable-icon-right]="!expanded"
+         [class.datatable-icon-down]="expanded"
+         title="Expand/Collapse Row"
+         (click)="toggleExpandRow(row)">
+      </a>
+    </ng-template>
+  </ngx-datatable-column>
+
+  <ngx-datatable-column *ngIf="actionColumnConfig.length > 0" name="Action" [sortable]="false">
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+      <div class="d-flex flex-row text-center">
+        <div *ngFor="let actions of actionColumnConfig">
+
+          <!--<div class="{{actions.buttonClass}}" (click)="actions.action(row)" tooltip="{{actions.toolTip}}" container="body" [adaptivePosition]="false" style="margin-right:2px">
+            <i class="{{actions.iconClass}}"></i>
+          </div>-->
+          <div class="{{actions.buttonClass}}" (click)="actions.action(row)" container="body" style="margin-right:2px">
+            <i class="{{actions.iconClass}}"></i>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ngx-datatable-column>
+
+  <!--<ngx-datatable-column *ngFor="let col of columnDefs" name="{{col.title}}" sortable="true" [prop]="col.key">-->
+  <ngx-datatable-column *ngFor="let col of columnDefs" name="{{col.title}}" [prop]="col.key">
+    <ng-template [ngSwitch]="col.columnType" let-value="value" let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+      <ng-container *ngSwitchCase="columnType.Template">
+        <ng-template *ngTemplateOutlet="col.template; context: {row: row, value: value, rowIndex: rowIndex}"></ng-template>
+      </ng-container>
+      <ng-container *ngSwitchCase="columnType.Text">
+        {{value}}
+      </ng-container>
+      <ng-container *ngSwitchCase="columnType.Money">
+        {{formatter.format(value )}}
+      </ng-container>
+      <ng-container *ngSwitchCase="columnType.Number">
+        {{value}}
+      </ng-container>
+      <ng-container *ngSwitchCase="columnType.Date">
+        {{parseToLocalDate(value)}}
+      </ng-container>
+      <ng-container *ngSwitchCase="columnType.DateTime">
+        {{parseToLocalDateTime(value)}}
+      </ng-container>
+      <ng-container *ngSwitchCase="columnType.Time">
+        {{parseToLocalTime(value)}}
+      </ng-container>
+      <ng-container *ngSwitchCase="columnType.Boolean">
+        {{value}}
+      </ng-container>
+    </ng-template>
+  </ngx-datatable-column>
+
+  <ngx-datatable-footer>
+    <ng-template ngx-datatable-footer-template
+                 let-rowCount="rowCount"
+                 let-pageSize="pageSize"
+                 let-selectedCount="selectedCount"
+                 let-curPage="curPage"
+                 let-offset="offset">
+      <div style="padding: 5px 10px">
+        <div>
+          total : {{ rowCount }}
+        </div>
+      </div>
+      <datatable-pager [page]="curPage"
+                       [size]="pageSize"
+                       [count]="rowCount"
+                       [hidden]="false"
+                       (change)="table.onFooterPage($event)">
+      </datatable-pager>
+    </ng-template>
+  </ngx-datatable-footer>
+</ngx-datatable>

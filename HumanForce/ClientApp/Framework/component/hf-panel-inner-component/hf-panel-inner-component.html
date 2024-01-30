@@ -1,0 +1,16 @@
+<div class="card card-primary mt-2">
+  <div class="card-header" [ngClass]="cardHeaderColor==='#137FBE'?'fontWhiteColor':'fontBlackColor'" style="background-color:{{cardHeaderColor}}">
+    <ng-content select="[header]" >
+
+    </ng-content>
+  </div>
+  <div class="card-body">
+    <div class="d-flex justify-content-center">
+      <div style="z-index:1000" class="spinner justify-content-center align-items-center" *ngIf="isLoading"></div>
+    </div>
+    <ng-content select="[body]">
+
+    </ng-content>
+  </div>
+</div>
+
