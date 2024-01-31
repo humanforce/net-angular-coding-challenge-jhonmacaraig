@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-12">
+    <hf-panel-inner-component>
+      <ng-container header>
+        {{'teamMembers.panel.title'}} |translations
+        <!--<div class="action float-end">
+          <span class="spanCursorPointerButtonPanel"><i class="fa-solid fa-plus"></i>Add Member</span>
+        </div>-->
+      </ng-container>
+      <ng-container body>
+        <div class="col-12">
+          <div class="row">
+            <hf-grid-component [allowSearch]="true"
+                               [rows]="usersService.users"
+                               [columnDefs]="columnDefs">
+            </hf-grid-component>
+          </div>
+        </div>
+      </ng-container>
+    </hf-panel-inner-component>
+  </div>
+</div>
+
+<ng-template #actionTemplate let-row="row" let-value="value">
+  <div class="d-flex flex-row text-center">
+    <a (click)="onViewHolidayClick(row)">Holiday</a>&nbsp;
+  </div>
+</ng-template>
+

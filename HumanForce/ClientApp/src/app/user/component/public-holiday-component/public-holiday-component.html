@@ -1,0 +1,24 @@
+
+<div class="row">
+  <div class="col-12">
+    <hf-panel-inner-component>
+      <ng-container header>
+        Public Holiday for {{userTemplateService.selectedUser.name}}-{{userTemplateService.selectedUser.location.country}}
+        <div class="action float-end" (click)="onCloseClick()">
+          <span class="spanCursorPointerButtonPanel"><i class="fa-solid fa-plus"></i>X</span>
+        </div>
+      </ng-container>
+      <ng-container body>
+        <div class="col-12">
+          <div class="row">
+            <hf-grid-component [allowSearch]="true"
+                               [rows]="publicHolidayService?.userPublicHoliday?.items"
+                               [columnDefs]="columnDefs">
+            </hf-grid-component>
+          </div>
+        </div>
+      </ng-container>
+    </hf-panel-inner-component>
+  </div>
+</div>
+
